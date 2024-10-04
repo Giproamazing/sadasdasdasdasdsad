@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        img {
+            max-width: 300px;
+            max-height: 200px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Verify Your Drawing</h1>
+    
+    <img id="drawingImage" src="" alt="User Drawing">
+    
+    <button id="acceptButton">Accept</button>
+    <button id="denyButton">Deny</button>
+
+    <div id="message">Wait for it to be accepted. Until then, try drawing something else!</div>
+
+    <script>
+        // Get the drawing data from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const drawingData = urlParams.get('drawing');
+
+        // Set the image source to the drawing data URL
+        if (drawingData) {
+            document.getElementById('drawingImage').src = drawingData;
+        }
+
+        // Handle accept and deny buttons
+        document.getElementById('acceptButton').addEventListener('click', () => {
+            alert("Drawing Accepted!");
+            // Add your logic for accepted drawing
+        });
+
+        document.getElementById('denyButton').addEventListener('click', () => {
+            alert("Drawing Denied!");
+            // Add your logic for denied drawing
+        });
+    </script>
+</body>
+</html>
